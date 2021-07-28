@@ -15,26 +15,17 @@ wait until ship:verticalspeed < -1.
 print("Locking to retrograde").
 lock steering to ship:srfretrograde.
 
-if(alt:radar >= 250){
-    when (alt:radar < 250) then {
-        if(not gear) {
-            gear on.
-            print("Gears out!").
-        }
-    }
-}
-else {
-    if(not gear) {
-        gear on.
-        print("Gears out!").
-    }
+
+when (alt:radar < 250) then {
+    gear on.
+    print("Gears out!").
 }
 when ship:verticalspeed > -1 then {
     set landingCompleted to true.    
 }
 
 print("Waiting for altitude...").
-wait until LandingThrottle() > 0.97.
+wait until LandingThrottle() >= 1.
 
 print("Doing the suicide burn!").
 until landingCompleted {

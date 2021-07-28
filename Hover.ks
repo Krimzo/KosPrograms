@@ -31,16 +31,12 @@ on ag4 {
     clearScreen.
     print("Hover mode is off!").
 }.
-on ag9 {
-    // user input
-    preserve.
-}.
 on ag10 {
     set hoverAltitude to altitude.
     preserve.
 }.
 
 until not hovering {
-    print ("Hover altitude: " + round(hoverAltitude, 2) + " meters") at (0, 0).
+    print ("Hover altitude: " + hoverAltitude) at (0, 0).
     lock throttle to HoverThrottle(hoverAltitude).
 }
