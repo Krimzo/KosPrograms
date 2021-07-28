@@ -1,7 +1,7 @@
-runpath("0:MyLib1.ks").
+runoncepath("0:MyLib1.ks").
 function HoverThrottle {
     parameter wantedAltitude.
-    return (2 * (wantedAltitude - altitude) + CurrentGravity() - ship:verticalspeed) / MaxAcc().
+    return (2 * (wantedAltitude - altitude) + CurrentGravity() - 2 * ship:verticalspeed) / MaxAcc().
 }.
 
 clearScreen.
@@ -33,9 +33,11 @@ on ag4 {
 }.
 on ag9 {
     // user input
+    preserve.
 }.
 on ag10 {
     set hoverAltitude to altitude.
+    preserve.
 }.
 
 until not hovering {

@@ -1,4 +1,4 @@
-runpath("0:MyLib1.ks").
+runoncepath("0:MyLib1.ks").
 function LandingThrottle {
     return (CurrentGravity() + ((ship:airspeed^2) / (2 * RealRAlt()))) / MaxAcc().
 }.
