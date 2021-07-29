@@ -1,3 +1,4 @@
+runOncePath("0:lib/NavBallLib.ks").
 function CurrentGravity {
     return body:mu / (altitude + body:radius)^2.
 }.

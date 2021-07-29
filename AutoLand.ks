@@ -1,4 +1,4 @@
-runoncepath("0:MyLib1.ks").
+runoncepath("0:lib/MyLib1.ks").
 
 lock throttle to 0.0.
 sas off.
