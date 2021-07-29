@@ -6,29 +6,20 @@ function LandingThrottle {
 lock throttle to 0.0.
 sas off.
 lock steering to up.
-set landingCompleted to false.
-
 clearScreen.
+
 print("Auto landing started!").
 wait until ship:verticalspeed < -1.
 
 print("Locking to retrograde").
 lock steering to ship:srfretrograde.
-
-
-when (alt:radar < 250) then {
-    gear on.
-    print("Gears out!").
-}
-when ship:verticalspeed > -1 then {
-    set landingCompleted to true.    
-}
+gear on.
 
 print("Waiting for altitude...").
-wait until LandingThrottle() >= 1.
+wait until LandingThrottle() > 0.97.
 
 print("Doing the suicide burn!").
-until landingCompleted {
+until ship:verticalspeed > -1 {
     lock throttle to LandingThrottle().
 }
 

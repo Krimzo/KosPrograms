@@ -19,24 +19,37 @@ function RealRAlt {
     }
     return alt:radar - (highestPart - lowestPart).
 }.
-
+function PosVerDis {
+    return (verticalSpeed^2) / (2 * CurrentGravity()).
+}.
+function NegVerDis {
+    return (verticalSpeed^2) / (2 * MaxAcc() - 2 * CurrentGravity()).
+}.
+global decimalDigits is "0123456789".
 function StrParseInt {
     parameter inputString.
-    set decimalDigits to "0123456789".
 	set inputString to inputString:trim().
-	set strLen to inputString:length-1.
+	set strLen to inputString:length.
 	set parsedNum to 0.
     set sign to 1.
-	for i in range(strLen, -1) {
-		if (inputString[i] = "-" and i = 0) {
-            set sign to -1. 
+	for i in range(0, strLen, 1) {
+		if (inputString[i] = "-") {
+            if (i = 0) {
+                set sign to -1. 
+            }
+            else {
+                print("Couldn't parse scalar. Bad string input.").
+			    return 1/0.
+            }
         }
-		set legalDigit to decimalDigits:find(inputString[i]).
-		if (legalDigit = -1) {
-			print("Bad string input.").
-			return 1/0.
-		}
-		set parsedNum to parsedNum + (legalDigit * 10^(strLen-i)).
+        else {
+		    set digitPos to decimalDigits:find(inputString[i]).
+		    if (digitPos = -1) {
+			    print("Couldn't parse scalar. Bad string input.").
+			    return 1/0.
+		    }
+		    set parsedNum to parsedNum + (digitPos * 10^(strLen - 1 - i)).
+        }
 	}
 	return parsedNum * sign.
-}
+}.
