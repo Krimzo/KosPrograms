@@ -4,7 +4,7 @@ function CurrentGravity {
 function MaxAcc {
     return ship:availablethrust / ship:mass.
 }.
-function RealRAlt {
+function RealRadarAlt {
     list parts in partList.
     set lowestPart to 0.
     set highestPart to 0.
@@ -24,6 +24,13 @@ function PosVerDis {
 }.
 function NegVerDis {
     return (verticalSpeed^2) / (2 * MaxAcc() - 2 * CurrentGravity()).
+}.
+function HoverThrottle {
+    parameter wantedAltitude.
+    if((wantedAltitude - altitude) < 0){
+        return (2 * (wantedAltitude - (altitude - NegVerDis())) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
+    }
+    return (2 * (wantedAltitude - (PosVerDis() + altitude)) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
 }.
 global decimalDigits is "0123456789".
 function StrParseInt {

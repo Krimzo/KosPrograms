@@ -1,11 +1,4 @@
 runoncepath("0:MyLib1.ks").
-function HoverThrottle {
-    parameter wantedAltitude.
-    if((wantedAltitude - altitude) < 0){
-        return (2 * (wantedAltitude - (altitude - NegVerDis())) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
-    }
-    return (2 * (wantedAltitude - (PosVerDis() + altitude)) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
-}.
 
 sas off.
 lock steering to up.
@@ -29,6 +22,7 @@ on ag3 {
 }.
 on ag4 {
     set hovering to false.
+    wait(0.25).
     clearScreen.
     print("Hover mode is off!").
 }.
@@ -56,11 +50,11 @@ on ag9 {
     preserve.
 }.
 on ag10 {
-    set hoverAltitude to RealRAlt().
+    set hoverAltitude to altitude.
     preserve.
 }.
 
 until not hovering {
     lock throttle to HoverThrottle(hoverAltitude).
-    print ("Hover altitude: " + round(hoverAltitude, 2) + " meters    ") at (0, 0).
+    print ("Hover altitude: " + round(hoverAltitude, 2) + " meters      ") at (0, 0).
 }
