@@ -8,12 +8,7 @@ clearScreen.
 print("Auto landing started!").
 wait until ship:verticalspeed < -1.
 
-if (alt:radar >= 300) {
-    when (alt:radar < 300) then {
-        gear on.
-    }
-}
-else {
+when (alt:radar < 300) then {
     gear on.
 }
 
@@ -22,7 +17,7 @@ lock steering to ship:srfretrograde.
 
 print("Doing the suicide burn!").
 until ship:verticalspeed > -1 {
-    lock throttle to HoverThrottle(altitude - alt:radar).
+    lock throttle to HoverThrottle((altitude - alt:radar) + 1).
 }
 
 lock throttle to 0.0.
