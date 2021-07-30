@@ -29,9 +29,9 @@ function NegVerDis {
 function HoverThrottle {
     parameter wantedAltitude.
     if((wantedAltitude - altitude) < 0){
-        return (2 * (wantedAltitude - (altitude - NegVerDis())) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
+        return (2 * (wantedAltitude - (altitude - NegVerDis())) + CurrentGravity() - (2 * ship:verticalspeed)) / (MaxAcc() * sin(GetPitch())).
     }
-    return (2 * (wantedAltitude - (PosVerDis() + altitude)) + CurrentGravity() - (2 * ship:verticalspeed)) / MaxAcc().
+    return (2 * (wantedAltitude - (PosVerDis() + altitude)) + CurrentGravity() - (2 * ship:verticalspeed)) / (MaxAcc() * sin(GetPitch())).
 }.
 global decimalDigits is "0123456789".
 function StrParseInt {
