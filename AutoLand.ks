@@ -1,4 +1,4 @@
-runoncepath("0:lib/MyLib1.ks").
+runoncepath("0:lib/MainLib.ks").
 
 lock throttle to 0.0.
 sas off.
@@ -11,9 +11,9 @@ wait until ship:verticalspeed < -1.
 print("Locking to retrograde").
 lock steering to ship:srfretrograde.
 
-print("Doing the suicide burn!").
 gear on.
-until ship:verticalspeed > -1 {
+print("Doing the suicide burn!").
+until (ship:verticalspeed > -1) {
     lock throttle to HoverThrottle(altitude - RealRadarAlt()).
 }
 
@@ -22,4 +22,3 @@ lock throttle to 0.0.
 wait(3).
 clearScreen.
 print("Landed!").
-//core:part:getmodule("kOSProcessor"):doevent("Close Terminal").

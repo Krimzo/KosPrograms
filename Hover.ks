@@ -1,9 +1,11 @@
-runoncepath("0:lib/MyLib1.ks").
+runoncepath("0:lib/MainLib.ks").
 
 sas off.
 set hovering to true.
 set hoverAltitude to altitude.
-set hoverDirection to up.
+set northVelocity to 0.0.
+set eastVelocity to 0.0.
+lock steering to up.
 clearScreen.
 
 on ag1 {
@@ -27,19 +29,19 @@ on ag4 {
     print("Hover mode is off!").
 }.
 on ag5 {
-    set hoverDirection to r(hoverDirection:pitch, hoverDirection:yaw + 5, hoverDirection:roll).
+    set northVelocity to (northVelocity - 5).
     preserve.
 }.
 on ag6 {
-    set hoverDirection to r(hoverDirection:pitch + 5, hoverDirection:yaw, hoverDirection:roll).
+    set northVelocity to (northVelocity + 5).
     preserve.
 }.
 on ag7 {
-    set hoverDirection to r(hoverDirection:pitch - 5, hoverDirection:yaw, hoverDirection:roll).
+    set eastVelocity to (eastVelocity - 5).
     preserve.
 }.
 on ag8 {
-    set hoverDirection to r(hoverDirection:pitch, hoverDirection:yaw - 5, hoverDirection:roll).
+    set eastVelocity to (eastVelocity + 5).
     preserve.
 }.
 on ag9 {
@@ -66,14 +68,15 @@ on ag9 {
     preserve.
 }.
 on ag10 {
-    set hoverAltitude to altitude.
-    set hoverDirection to up.
+    set northVelocity to 0.0.
+    set eastVelocity to 0.0.
     preserve.
 }.
 
 until not hovering {
     lock throttle to HoverThrottle(hoverAltitude).
-    lock steering to hoverDirection.
+    lock steering to HoverHeading(northVelocity, eastVelocity, 45).
     print ("Hover altitude: " + round(hoverAltitude, 2) + " meters      ") at (0, 0).
-    print ("Hover direction: " + "(" + round(GetHeading(), 2) + ", " + round(GetPitch(), 2) + ", " + round(GetRoll(), 2) + ")") at (0, 1).
+    print ("North velocity: " + northVelocity + "       ") at (0, 1).
+    print ("East velocity: " + eastVelocity + "       ") at (0, 2).
 }
