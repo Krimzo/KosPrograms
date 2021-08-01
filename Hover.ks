@@ -68,6 +68,7 @@ on ag9 {
     preserve.
 }.
 on ag10 {
+    set hoverAltitude to altitude.
     set northVelocity to 0.0.
     set eastVelocity to 0.0.
     preserve.
