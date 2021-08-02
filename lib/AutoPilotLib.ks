@@ -18,7 +18,6 @@ function HoverHeading {
 
     set neededNorthVelo to (wantedNorthVelo - GetNorthVelo()).
     set neededEastVelo to (wantedEastVelo - GetEastVelo()).
-    set totalNeededVelo to (abs(neededNorthVelo) + abs(neededEastVelo)).
 
     if (not(neededNorthVelo = 0) and not(neededEastVelo = 0)) {
         if (neededEastVelo < 0) {
@@ -36,6 +35,7 @@ function HoverHeading {
     set neededNorthPitch to min(neededNorthPitch, (180 - neededNorthPitch)).
     set neededEastPitch to max(arcCos(min(max(neededEastVelo / MaxAcc(), -1), 1)), pitchLimit).
     set neededEastPitch to min(neededEastPitch, (180 - neededEastPitch)).
+    set totalNeededVelo to (abs(neededNorthVelo) + abs(neededEastVelo)).
     if (totalNeededVelo > 0) {
         set neededPitch to (abs(neededNorthPitch * (neededNorthVelo / totalNeededVelo)) + abs(neededEastPitch * (neededEastVelo / totalNeededVelo))).
     }

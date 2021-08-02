@@ -18,7 +18,8 @@ on ag2 {
 }.
 on ag3 {
     set hovering to false.
-    wait(0.25).
+    wait(0.5).
+    clearScreen.
     lock throttle to 0.0.
     runPath("0:AutoLand.ks").
 }.
@@ -76,7 +77,7 @@ on ag10 {
 
 until not hovering {
     lock throttle to HoverThrottle(hoverAltitude).
-    lock steering to HoverHeading(northVelocity, eastVelocity, 45).
+    lock steering to HoverHeading(northVelocity, eastVelocity, 30).
     print ("Hover altitude: " + round(hoverAltitude, 2) + " meters      ") at (0, 0).
     print ("North velocity: " + northVelocity + "       ") at (0, 1).
     print ("East velocity: " + eastVelocity + "       ") at (0, 2).

@@ -14,7 +14,7 @@ lock steering to ship:srfretrograde.
 gear on.
 print("Doing the suicide burn!").
 until (ship:verticalspeed > -1) {
-    lock throttle to HoverThrottle(altitude - RealRadarAlt()).
+    lock throttle to HoverThrottle(altitude - TrueRadarAlt()).
 }
 
 lock throttle to 0.0.

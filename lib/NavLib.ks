@@ -1,9 +1,5 @@
 function GetHeading {
-  local result is arctan2(vdot(vcrs(ship:up:vector, ship:north:vector), ship:facing:forevector), vdot(ship:north:vector, ship:facing:forevector)).
-  if result < 0 {
-    return (360 + result).
-  }
-  return result.
+  return mod(360 - latlng(90, 0):bearing, 360).
 }.
 function GetPitch {
   return (90 - vang(ship:up:vector, ship:facing:forevector)).
@@ -14,7 +10,7 @@ function GetNorthVelo {
 function GetEastVelo {
     return -vdot(ship:velocity:surface, ship:north:starvector).
 }.
-function RealRadarAlt {
+function TrueRadarAlt {
     list parts in partList.
     set lowestPart to 0.
     set highestPart to 0.
