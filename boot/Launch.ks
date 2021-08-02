@@ -1,5 +1,6 @@
 core:part:getmodule("kOSProcessor"):doevent("Open Terminal").
-print("Press any key to launch:").
+print ("IPU: " + config:ipu).
+print ("Press any key to launch:").
 terminal:input:getchar().
 from {local i is 3.} until (i = 0) step {set i to i-1.} do {
   print("T -" + i).
@@ -7,7 +8,7 @@ from {local i is 3.} until (i = 0) step {set i to i-1.} do {
 }
 
 lock throttle to 0.0.
-lock steering to heading(110.5, 79).
+lock steering to heading(187, 55).
 stage.
 
 clearScreen.

@@ -1,4 +1,4 @@
-runoncepath("0:lib/MainLib.ks").
+runoncepath("0:lib/AutoPilotLib.ks").
 
 sas off.
 set hovering to true.
@@ -22,12 +22,12 @@ on ag3 {
     lock throttle to 0.0.
     runPath("0:AutoLand.ks").
 }.
-on ag4 {
-    set hovering to false.
-    wait(0.25).
-    clearScreen.
-    print("Hover mode is off!").
-}.
+//on ag4 {
+//    set hovering to false.
+//    wait(0.25).
+//    clearScreen.
+//    print("Hover mode is off!").
+//}.
 on ag5 {
     set northVelocity to (northVelocity - 5).
     preserve.

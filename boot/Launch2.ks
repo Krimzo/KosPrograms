@@ -1,5 +1,6 @@
 core:part:getmodule("kOSProcessor"):doevent("Open Terminal").
-print("Press any key to start:").
+print ("IPU: " + config:ipu).
+print ("Press any key to start:").
 terminal:input:getchar().
 
 stage.

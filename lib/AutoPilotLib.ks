@@ -36,7 +36,6 @@ function HoverHeading {
     set neededNorthPitch to min(neededNorthPitch, (180 - neededNorthPitch)).
     set neededEastPitch to max(arcCos(min(max(neededEastVelo / MaxAcc(), -1), 1)), pitchLimit).
     set neededEastPitch to min(neededEastPitch, (180 - neededEastPitch)).
-
     if (totalNeededVelo > 0) {
         set neededPitch to (abs(neededNorthPitch * (neededNorthVelo / totalNeededVelo)) + abs(neededEastPitch * (neededEastVelo / totalNeededVelo))).
     }
@@ -44,5 +43,5 @@ function HoverHeading {
         set neededPitch to 90.
     }
 
-    return heading(neededYaw, neededPitch, 180).
+    return heading(neededYaw, neededPitch, 0).
 }.

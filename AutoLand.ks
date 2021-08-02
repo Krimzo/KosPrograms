@@ -1,4 +1,4 @@
-runoncepath("0:lib/MainLib.ks").
+runoncepath("0:lib/AutoPilotLib.ks").
 
 lock throttle to 0.0.
 sas off.
