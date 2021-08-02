@@ -18,12 +18,12 @@ function HoverHeading {
 
     set neededYaw to arcTan2((wantedEastVelo - GetEastVelo()), (wantedNorthVelo - GetNorthVelo())).
 
-    set neededNorthVelo to abs(wantedNorthVelo - GetNorthVelo()).
     set neededEastVelo to abs(wantedEastVelo - GetEastVelo()).
-    set totalNeededVelo to (neededNorthVelo + neededEastVelo).
+    set neededNorthVelo to abs(wantedNorthVelo - GetNorthVelo()).
+    set totalNeededVelo to max((neededNorthVelo + neededEastVelo), 1E-4).
 
-    set neededNorthPitch to max(arcCos(min(neededNorthVelo / MaxAcc(), 1)), pitchLimit).
     set neededEastPitch to max(arcCos(min(neededEastVelo / MaxAcc(), 1)), pitchLimit).
+    set neededNorthPitch to max(arcCos(min(neededNorthVelo / MaxAcc(), 1)), pitchLimit).
     set neededPitch to (neededNorthPitch * (neededNorthVelo / totalNeededVelo) + neededEastPitch * (neededEastVelo / totalNeededVelo)).
 
     return heading(neededYaw, neededPitch).
