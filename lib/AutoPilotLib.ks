@@ -15,7 +15,7 @@ function HoverHeading {
     parameter wantedNorthVelo.
     parameter wantedEastVelo.
     parameter pitchLimit.
-
+    
     set neededYaw to arcTan2((wantedEastVelo - GetEastVelo()), (wantedNorthVelo - GetNorthVelo())).
 
     set neededEastVelo to abs(wantedEastVelo - GetEastVelo()).

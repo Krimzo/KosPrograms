@@ -8,7 +8,7 @@ from {local i is 3.} until (i = 0) step {set i to i-1.} do {
 }
 
 lock throttle to 0.0.
-lock steering to heading(187, 55).
+lock steering to heading(80, 60).
 stage.
 
 clearScreen.

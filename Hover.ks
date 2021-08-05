@@ -69,7 +69,6 @@ on ag9 {
     preserve.
 }.
 on ag10 {
-    set hoverAltitude to altitude.
     set northVelocity to 0.0.
     set eastVelocity to 0.0.
     preserve.
@@ -81,7 +80,4 @@ until not hovering {
     print ("Hover altitude: " + round(hoverAltitude, 2) + " meters      ") at (0, 0).
     print ("North velocity: " + northVelocity + "       ") at (0, 1).
     print ("East velocity: " + eastVelocity + "       ") at (0, 2).
-    if (addons:tr:hasimpact) {
-        print ("Landing coords: " + addons:tr:impactpos:lat + "N, " + addons:tr:impactpos:lng + "E" + "     ") at (0, 3).
-    }
 }

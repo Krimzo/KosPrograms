@@ -5,10 +5,13 @@ function GetPitch {
   return (90 - vang(ship:up:vector, ship:facing:forevector)).
 }.
 function GetNorthVelo {
-  return vdot(ship:velocity:surface, ship:north:forevector).
+  return vDot(ship:velocity:surface, ship:north:forevector).
 }.
 function GetEastVelo {
-  return -vdot(ship:velocity:surface, ship:north:starvector).
+  if (latitude < 0) {
+    return -vDot(ship:velocity:surface, ship:north:starvector).
+  }
+  return vDot(ship:velocity:surface, ship:north:starvector).
 }.
 function TrueRadarAlt {
   list parts in partList.
@@ -26,6 +29,5 @@ function TrueRadarAlt {
   return alt:radar - (highestPart - lowestPart).
 }.
 function GetLandingCoords {
-  set currentCoords to latlng(latitude, longitude).
-
+  //set currentCoords to latlng(latitude, longitude).
 }.
